@@ -13,24 +13,50 @@
 </head>
 
 <body>
-    <table class="table">
-        <thead class="table-dark">
-            <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Link</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for link in data %}
-            <tr>
-                <td>{{link.id}}</td>
-                <td>{{link.name}}</td>
-                <td>{{link.address}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 m-1">
+              <h2>Link Collector</h2>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col-md-4">
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    <input class="form-control" type="text" id="site" name="site" placeholder="Enter site address">
+            </div>
+            <div class="col-md-1">
+                <button class="btn btn-primary" type="submit">Scrape</button>
+            </div>
+            </form>
+            <div class="col-md-7">
+                <a class="btn btn-warning" href="/delete">Delete</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Link</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for link in data %}
+                        <tr>
+                            <td>{{link.id}}</td>
+                            <td>{{link.name}}</td>
+                            <td>{{link.address}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
 </body>
 
 </html>
